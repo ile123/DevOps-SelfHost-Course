@@ -1,0 +1,19 @@
+DOMAIN: iledevopstest.top
+IP: <REDACTED>
+FQDN: vps.iledevopstest.top
+Host Bridge Network: <REDACTED>
+Additional loopback address: <REDACTED>
+Wireguard IP range: <REDACTED>
+Wireguard endpoint: <REDACTED>
+Wiregaurd client (laptop): <REDACTED>
+Wireguard client (phone): <REDACTED>
+
+-----------------------------
+
+SSH CONFIG FROM MAIN MACHINE(THE ONE WE ARE SSH FROM TO THE VPS)
+
+Host iledevopstest.top
+    User root
+    Hostname <REDACTED>
+    IdentityFile ~/.ssh/linode_ssh
+    Port 44422

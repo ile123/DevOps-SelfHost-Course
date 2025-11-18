@@ -1,0 +1,18 @@
+- hosts: main
+  roles:
+    # - hostname
+    # - essentials
+    # - security
+    # - sysctl
+    # - certbot
+    # - wireguard
+    # - docker
+    # - mariadb
+    # - lxc
+    # - pi-hole
+    # - nextcloud
+    # - checkmk
+    # - borg
+    - gitlab
+# all names in roles must match the directories from which they are called, ie. if you want to call hostname you need a hostname directory
+# and a main.yml

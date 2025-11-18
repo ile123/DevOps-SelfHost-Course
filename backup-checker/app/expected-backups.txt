@@ -1,0 +1,7 @@
+checkmk.iledevopstest.top
+gitlab.iledevopstest.top
+mail.iledevopstest.top
+nextcloud.iledevopstest.top
+pi-hole.iledevopstest.top
+vps.iledevopstest.top
+zulip.iledevopstest.top

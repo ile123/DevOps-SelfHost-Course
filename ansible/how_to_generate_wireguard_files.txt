@@ -1,0 +1,8 @@
+(umask 0077; wg genkey > iledevopstest.key)
+(umask 0077; wg genkey > laptop.key)
+(umask 0077; wg genkey > phone.key)
+wg pubkey < iledevopstest.key > iledevopstest.pub
+wg pubkey < laptop.key > laptop.pub
+wg pubkey < phone.key > phone.pub
+(umask 0077; wg genpsk > iledevopstest-laptop.psk)
+(umask 0077; wg genpsk > iledevopstest-phone.psk)

@@ -1,0 +1,20 @@
+- name: install packages
+  community.general.pacman:
+    update_cache: yes
+    name: wireguard-tools
+    state: present
+
+- name: wg-iledevopstest
+  ansible.builtin.copy:
+    src: wg-iledevopstest.conf
+    dest: /etc/wireguard/wg-iledevopstest.conf
+    owner: root
+    group: root
+    mode: '600'
+  notify: restart wg-iledevopstest
+
+- name: ensure wg-quick@wg-iledevopstest.service is started and enabled at boot
+  ansible.builtin.systemd:
+    name: wg-quick@wg-iledevopstest.service
+    state: started
+    enabled: yes

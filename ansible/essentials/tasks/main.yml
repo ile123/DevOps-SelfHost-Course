@@ -1,0 +1,24 @@
+- name: drop-in directory  # resembles https://wiki.archlinux.org/title/Systemd#Drop-in_files
+  ansible.builtin.file: # this is needed so we can replace the default nameservers in the resolvconf
+    path: /etc/systemd/network/05-eth0.network.d/
+    state: directory
+    owner: root
+    group: root
+    mode: '755'  # note the quotes: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html#parameter-mode
+
+- name: copy custom config
+  ansible.builtin.copy: #copies our custom config in the ansible project and sets it up on the VPS
+    src: files/01-custom.conf
+    dest: /etc/systemd/network/05-eth0.network.d/01-custom.conf
+    owner: root
+    group: root
+    mode: '644'
+    backup: yes
+  notify: restart systemd-networkd  # https://docs.ansible.com/ansible/latest/user_guide/playbooks_handlers.html, this will trigger the handler in the
+# handlers directory everytime the lines in ansible.builtin.copy change, the notify must match the name that is provided in the handlers main.yml file
+- include_tasks: packages.yml
+- include_tasks: cronie.yml
+# this is a network bridge that will be used to communicate between VM(LXC) and host(Arch)
+- include_tasks: br0.yml
+# this will be used so we can redeirect network packets to docker containers from host
+- include_tasks: loopback.yml

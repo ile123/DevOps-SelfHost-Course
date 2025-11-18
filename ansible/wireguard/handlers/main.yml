@@ -1,0 +1,2 @@
+- name: restart wg-iledevopstest
+  systemd: "name=wg-quick@wg-iledevopstest.service state=restarted"
